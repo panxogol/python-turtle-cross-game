@@ -12,4 +12,5 @@ To Play the game you can use the "**Up**", "**Left**", and "**Right**"
 arrows of the keyboard.
 
 The objective is to get to the end of the street without being crash by a car.
-Every time you cross the street, the cars will run faster.
+
+Every time you cross the street, the cars will run faster and will show up more often.
