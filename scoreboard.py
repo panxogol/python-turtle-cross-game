@@ -37,3 +37,15 @@ class ScoreBoard(Turtle):
                 GAME_OVER_TEXT_STYLE
             )
         )
+
+    def win(self):
+        self.home()
+        self.write(
+            arg=WIN_TEXT,
+            align=GAME_OVER_TEXT_ALIGN,
+            font=(
+                GAME_OVER_TEXT_FONT,
+                GAME_OVER_TEXT_SIZE,
+                GAME_OVER_TEXT_STYLE
+            )
+        )

@@ -5,6 +5,7 @@ from player import Player
 from time import sleep
 from cars import Car
 from scoreboard import ScoreBoard
+from random import choice
 
 
 # ---FUNCTIONS---
@@ -39,13 +40,23 @@ def main():
         sleep(sleep_time)
 
         # Create the cars
-        car = Car()
+        range_levels = range(MAX_LEVEL)
+        if choice(range_levels) in range_levels[:player.level + 1]:
+            car = Car()
+            cars.append(car)
+
+        # Move the cars
         for car_object in cars:
             car_object.moveCar()
-        cars.append(car)
+
+        # Get to finish line
         if player.hasFinished():
             scoreboard.writeScore(player_score=player.level)
             sleep_time *= SLEEP_TIME_DECREASE_WHEN_FINISH
+            if player.level == MAX_LEVEL + 1:
+                scoreboard.win()
+                game_is_on = False
+
         # Erase car outside the screen
         for car in cars:
             if car.xcor() < -SCREEN_WIDTH / 2 - CAR_WIDTH / 2:
@@ -55,7 +66,6 @@ def main():
             if crash:
                 game_is_on = False
                 scoreboard.gameOver()
-
 
     # Exit on click
     screen.exitonclick()
